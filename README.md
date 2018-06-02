@@ -1,5 +1,5 @@
 # Hello, World!
-Código de exemplo do capítulo 2 do livro *Linux Device Drivers &mdash; 3rd ed.*
+Código de exemplo do capítulo 2 do livro *Linux Device Drivers &mdash; 3rd ed.*, testado no Ubuntu 16.04.
 
 # Compilando o módulo
 A partir do diretório raíz
@@ -31,10 +31,16 @@ Module.symvers
 ```
 
 # Inserir módulo *hello*
-Tendo sido criado o arquivo de extensão `.ko` após a compilação, instale o módulo executando
+Após a compilação, instale o módulo executando
 
 ```bash
 insmod hello.ko
+```
+
+ou usando o parâmetro `install` do *makefile*
+
+```bash
+make install
 ```
 
 Note que o processo de instalação pode necessitar da execução em super-usuário (sudo).
@@ -51,7 +57,15 @@ Estando o módulo `hello` inserido, remova-o utilizando
 rmmod hello
 ```
 
+ou usando o parâmetro `uninstall`
+
+```bash
+make uninstall
+```
+
 Assim como `insmod`, o comando `rmmod` requisita a execução com previlégios de super-user (fazendo `sudo rmmod hello`).
 
 Após a remoção, verifique a mensagem de aviso de remoção do módulo no buffer do kernel utilizando o `dmesg`.
+
+obs.: utilize `make clean` para remover os arquivos compilados.
 
